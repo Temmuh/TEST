@@ -1,2 +1,1 @@
-let el=document.getElementById("dateX");
-el.innerText=Date.now();
+const cvs = document.getElementById("canvas")
