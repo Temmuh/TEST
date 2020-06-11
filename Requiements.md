@@ -15,3 +15,5 @@ Required aspects for the snake game.
 6.) After death play again button appears which restarts the game
 
 7.)
+
+f

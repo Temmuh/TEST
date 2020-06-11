@@ -1,1 +1,5 @@
-const cvs = document.getElementById("canvas")
+window.addEventListener("keydown", (event) => {
+    console.log(event);
+});
+//keyboardinput
+g
