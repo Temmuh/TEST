@@ -69,7 +69,7 @@ function Circle(x, y, dx, dy, radius) {
         this.dy = -this.dy;    
       }
       if( this.x + this.radius > innerWidth || this.x - this.radius < 0) {
-        this.dx = -this.dx;    
+        this.dx = -this.dx;  
         }
   
         this.y += this.dy;
