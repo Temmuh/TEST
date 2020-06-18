@@ -46,8 +46,31 @@ var c = canvas.getContext("2d");
 
 //ark /circle
 
+var mouse = {
+    x: undefined,
+    y: undefined
+}
 
+var maxRadius = 30;
+var minRadius = 10;
 
+var colourArray = [ 
+"blue",
+"red",
+"yellow",
+"green",
+"grey"
+];
+
+window.addEventListener("mousemove", 
+    function(event) {
+    mouse.x = event.x;
+    mouse.y = event.y;
+        console.log(mouse);
+})
+
+window.addEventListener("resize", function(event) {canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;});
 
 function Circle(x, y, dx, dy, radius) {
     this.x = x;
@@ -55,12 +78,15 @@ function Circle(x, y, dx, dy, radius) {
     this.dx = dx;
     this.dy = dy;
     this.radius = radius;
+    this.minRadius = radius;
+    this.colour = colourArray[Math.floor(Math.random() * colourArray.length)]
 
     this.draw = function() {
         c.beginPath();
         c.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
-        c.strokeStyle="#"+Math.floor(Math.random()*16777215).toString(16);;
-        c.stroke();
+        c.fillStyle= this.colour
+        
+        c.fill();
     }
 
     this.update = function() {
@@ -75,6 +101,20 @@ function Circle(x, y, dx, dy, radius) {
         this.y += this.dy;
         this.x += this.dx;
         
+//interactivity
+        if(mouse.x - this.x < 50 && mouse.x - this.x > -50
+            && mouse.y - this.y < 50 && mouse.y - this.y > -50 ) {
+           
+        
+        if (this.radius < maxRadius) {
+             this.radius += 1;
+            }
+
+    }    else if(this.radius > this.minRadius){
+            this.radius -= 1;
+        }
+    
+
         this.draw();
     }
     
@@ -83,8 +123,8 @@ function Circle(x, y, dx, dy, radius) {
 
 var circleArray = [];
 
-for(var i = 0; i < 100; i++) {
-    var radius = 30;
+for(var i = 0; i < 800; i++) {
+    var radius = Math.random() * 3 + 1;
     var y = Math.random() * (innerHeight - radius * 2) + radius;
     var x = Math.random() * (innerWidth - radius * 2) + radius;
     var dx = (Math.random() - 0.5);
@@ -92,6 +132,7 @@ for(var i = 0; i < 100; i++) {
     circleArray.push(new Circle( x, y, dx, dy, radius));
 
 }
+
 
 
 
