@@ -7,10 +7,10 @@ const box = 32;
 //images
 
 const ground = new Image();
-ground.src = "Pictures/ground.png";
+ground.src = "./images/ground.png";
 
 const Apples = new Image();
-Apples.src = "Pictures/food.png";
+Apples.src = "./images/food.png";
 
 // snake
 
@@ -57,29 +57,13 @@ function draw(){
         ctx.strokeStyle = "red";
         ctx.strokeRect(snake[i].x,snake[i].y,box,box);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-function draw(){
-    for( let i=0; i < snake.length; i++){
-        ctx.fillStyle = (i==0)? "green" : "white"
-    }
 }
 
 
-
-
-
-
-
+//function draw(){
+//    for( let i=0; i < snake.length; i++){
+//        ctx.fillStyle = (i==0)? "green" : "white"
+//    }
+//}
 
 let game = setInterval(draw,100);
