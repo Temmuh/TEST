@@ -1,10 +1,9 @@
-const cvs = document.getElementById("snake");
-const ctx = cvs.getContext("2d");
 
-//create unit
-const box = 32;
+var canvas =document.getElementById("SnakeCanvas");
+var c = canvas.getContext("2d");
+c.fillStyle = "grey";
+c.fillRect(0, 0, 300, 300);
 
-//images
 
 const ground = new Image();
 ground.src = "./images/ground.png";
@@ -67,3 +66,10 @@ function draw(){
 //}
 
 let game = setInterval(draw,100);
+//let snake = [  {x: 150, y: 150},  {x: 140, y: 150},  {x: 130, y: 150},  {x: 120, y: 150},  {x: 110, y: 150}];
+//function drawSnakePart(snakepart) {     ctx.fillstyle= "green" ; ctx.strokestyle= "darkgreen" ;  
+//                                        ctx.fillrect(snakepart.x, snakepart.y, 10, 10); ctx.strokerect(snakepart.x, snakepart.y, 10, 10);
+//
+//}
+//
+//function drawSnake() { snake.forEach(drawSnakePart);}
