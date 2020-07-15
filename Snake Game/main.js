@@ -1,14 +1,32 @@
-
-var canvas =document.getElementById("SnakeCanvas");
-var c = canvas.getContext("2d");
-c.fillStyle = "grey";
-c.fillRect(0, 0, 300, 300);
+import { SnakeSpeed, update as UpdateSnake, draw as DrawSnake} from "./snake.js"
 
 
-let snake = [  {x: 150, y: 150},  {x: 140, y: 150},  {x: 130, y: 150},  {x: 120, y: 150},  {x: 110, y: 150}];
-function drawSnakePart(snakepart) {     ctx.fillstyle= "green" ; ctx.strokestyle= "darkgreen" ;  
-                                        ctx.fillrect(snakepart.x, snakepart.y, 10, 10); ctx.strokerect(snakepart.x, snakepart.y, 10, 10);
+ let lastRenderTime = 0 
+const gameBoard = document.getElementById("game-board")
+
+ function main(currentTime) {
+    window.requestAnimationFrame(main)
+    const secondSinceLastRender = (currentTime - lastRenderTime) / 1000
+    if (secondSinceLastRender < 1 / SnakeSpeed) return
+
+
+
+
+
+     lastRenderTime = currentTime 
+
+    update()
+    draw()
+}
+
+window.requestAnimationFrame(main)
+
+function update() {
+    UpdateSnake()
 
 }
 
-function drawSnake() { snake.forEach(drawSnakePart);}
+function draw() {
+    DrawSnake(gameBoard)
+
+}
